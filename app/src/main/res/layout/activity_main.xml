@@ -1,127 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#F8F8F8"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="POKEDEX"
-        android:textSize="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/et1"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter ID or Name of Pokemon: " />
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/searchBTN"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue"
-        android:text="SEARCH"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        <!-- Search Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="POKEDEX"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"/>
 
-    <ImageView
-        android:id="@+id/pokemonImage"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/poke" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:text="Pokedex ID: " />
+            <EditText
+                android:id="@+id/et1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Enter ID or Name of Pokemon"
+                android:padding="12dp"
+                android:background="@android:drawable/editbox_background" />
 
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:text="Name: " />
+            <Button
+                android:id="@+id/searchBTN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFF500"
+                android:textColor="#000000"
+                android:text="SEARCH"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Type: "
-        android:textStyle="bold" />
+        <!-- Pokemon Image -->
+        <ImageView
+            android:id="@+id/pokemonImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/poke" />
 
-    <TextView
-        android:id="@+id/tvHP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:text="HP: " />
+        <!-- Pokemon Name -->
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"/>
 
-    <TextView
-        android:id="@+id/tvAttack"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Attack: " />
+        <!-- Pokemon Type with background -->
+        <TextView
+            android:id="@+id/tvType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type: "
+            android:background="#4CAF50"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"/>
 
-    <TextView
-        android:id="@+id/tvDefense"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Defense: " />
+        <!-- Pokemon ID -->
+        <TextView
+            android:id="@+id/tvID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pokedex ID: "
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
 
-    <TextView
-        android:id="@+id/tvSpecialAttack"
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Special Attack: " />
+        <!-- Stats Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:background="#FFFFFF"
+            android:padding="12dp">
 
-    <TextView
-        android:id="@+id/tvSpecialDefense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:text="Special Defense: " />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Base Stats"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp"/>
 
-    <TextView
-        android:id="@+id/tvSpeed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:text="Speed: " />
+            <TextView
+                android:id="@+id/tvHP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HP: "
+                android:textStyle="bold" />
+                
+            <ProgressBar
+                android:id="@+id/progressHP"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255"
+                android:layout_marginBottom="8dp"/>
 
-    <Button
-        android:id="@+id/clearBTN"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/red"
-        android:text="CLEAR"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvAttack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Attack: "
+                android:textStyle="bold" />
+                
+            <ProgressBar
+                android:id="@+id/progressAttack"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255"
+                android:layout_marginBottom="8dp"/>
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tvDefense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Defense: "
+                android:textStyle="bold" />
+                
+            <ProgressBar
+                android:id="@+id/progressDefense"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvSpecialAttack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Special Attack: "
+                android:textStyle="bold" />
+                
+            <ProgressBar
+                android:id="@+id/progressSpecialAttack"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvSpecialDefense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Special Defense: "
+                android:textStyle="bold" />
+                
+            <ProgressBar
+                android:id="@+id/progressSpecialDefense"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Speed: "
+                android:textStyle="bold" />
+                
+            <ProgressBar
+                android:id="@+id/progressSpeed"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255"/>
+        </LinearLayout>
+
+        <!-- Clear Button -->
+        <Button
+            android:id="@+id/clearBTN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF3C3C"
+            android:text="CLEAR"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>

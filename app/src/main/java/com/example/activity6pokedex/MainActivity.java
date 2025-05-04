@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.graphics.Color;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -79,9 +81,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 clearPokemonData();
-                Glide.with(MainActivity.this)
-                        .load(R.drawable.poke)
-                        .into(pokemonImage);
             }
         });
     }
@@ -121,19 +120,40 @@ public class MainActivity extends AppCompatActivity {
                             int specialDefense = response.getJSONArray("stats").getJSONObject(4).getInt("base_stat");
                             int speed = response.getJSONArray("stats").getJSONObject(5).getInt("base_stat");
 
+                            // Format the name to title case
+                            String formattedName = name.substring(0, 1).toUpperCase() + name.substring(1);
+
                             Glide.with(MainActivity.this)
                                     .load(imageUrl)
                                     .into(pokemonImage);
 
+                            // Set the background color for the type badge
+                            setTypeBackground(tvType, type);
+
                             tvID.setText("Pokedex ID: " + id);
-                            tvName.setText("Name: " + name);
-                            tvType.setText("Type: " + type);
+                            tvName.setText(formattedName);
+                            tvType.setText(type.toUpperCase());
                             tvHP.setText("HP: " + hp);
                             tvAttack.setText("Attack: " + attack);
                             tvDefense.setText("Defense: " + defense);
                             tvSpecialAttack.setText("Special Attack: " + specialAttack);
                             tvSpecialDefense.setText("Special Defense: " + specialDefense);
                             tvSpeed.setText("Speed: " + speed);
+
+                            // Update progress bars
+                            ProgressBar progressHP = findViewById(R.id.progressHP);
+                            ProgressBar progressAttack = findViewById(R.id.progressAttack);
+                            ProgressBar progressDefense = findViewById(R.id.progressDefense);
+                            ProgressBar progressSpecialAttack = findViewById(R.id.progressSpecialAttack);
+                            ProgressBar progressSpecialDefense = findViewById(R.id.progressSpecialDefense);
+                            ProgressBar progressSpeed = findViewById(R.id.progressSpeed);
+
+                            progressHP.setProgress(hp);
+                            progressAttack.setProgress(attack);
+                            progressDefense.setProgress(defense);
+                            progressSpecialAttack.setProgress(specialAttack);
+                            progressSpecialDefense.setProgress(specialDefense);
+                            progressSpeed.setProgress(speed);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -160,14 +180,64 @@ public class MainActivity extends AppCompatActivity {
     private void clearPokemonData() {
         et1.setText("");
         tvID.setText("Pokedex ID: ");
-        tvName.setText("Name: ");
-        tvType.setText("Type: ");
+        tvName.setText("Name");
+        tvType.setText("Type");
         tvHP.setText("HP: ");
         tvAttack.setText("Attack: ");
         tvDefense.setText("Defense: ");
         tvSpecialAttack.setText("Special Attack: ");
         tvSpecialDefense.setText("Special Defense: ");
         tvSpeed.setText("Speed: ");
+        
+        // Reset progress bars
+        ProgressBar progressHP = findViewById(R.id.progressHP);
+        ProgressBar progressAttack = findViewById(R.id.progressAttack);
+        ProgressBar progressDefense = findViewById(R.id.progressDefense);
+        ProgressBar progressSpecialAttack = findViewById(R.id.progressSpecialAttack);
+        ProgressBar progressSpecialDefense = findViewById(R.id.progressSpecialDefense);
+        ProgressBar progressSpeed = findViewById(R.id.progressSpeed);
+        
+        progressHP.setProgress(0);
+        progressAttack.setProgress(0);
+        progressDefense.setProgress(0);
+        progressSpecialAttack.setProgress(0);
+        progressSpecialDefense.setProgress(0);
+        progressSpeed.setProgress(0);
+        
+        // Reset type background
+        tvType.setBackgroundColor(Color.GRAY);
+        
+        // Load default image
+        Glide.with(MainActivity.this)
+                .load(R.drawable.poke)
+                .into(pokemonImage);
+    }
+
+    // Helper method to set type background color
+    private void setTypeBackground(TextView typeTextView, String type) {
+        int color;
+        switch (type.toLowerCase()) {
+            case "fire": color = getResources().getColor(android.R.color.holo_red_light); break;
+            case "water": color = getResources().getColor(android.R.color.holo_blue_light); break;
+            case "grass": color = getResources().getColor(android.R.color.holo_green_light); break;
+            case "electric": color = Color.parseColor("#FFD700"); break;
+            case "psychic": color = Color.parseColor("#FF69B4"); break;
+            case "ice": color = Color.parseColor("#ADD8E6"); break;
+            case "dragon": color = Color.parseColor("#6F35FC"); break;
+            case "dark": color = Color.parseColor("#705746"); break;
+            case "fairy": color = Color.parseColor("#EE99AC"); break;
+            case "normal": color = Color.parseColor("#A8A77A"); break;
+            case "fighting": color = Color.parseColor("#C22E28"); break;
+            case "flying": color = Color.parseColor("#A98FF3"); break;
+            case "poison": color = Color.parseColor("#A33EA1"); break;
+            case "ground": color = Color.parseColor("#E2BF65"); break;
+            case "rock": color = Color.parseColor("#B6A136"); break;
+            case "bug": color = Color.parseColor("#A6B91A"); break;
+            case "ghost": color = Color.parseColor("#735797"); break;
+            case "steel": color = Color.parseColor("#B7B7CE"); break;
+            default: color = Color.GRAY;
+        }
+        typeTextView.setBackgroundColor(color);
     }
 }
 

@@ -33,37 +33,16 @@
                 app:srcCompat="@drawable/arrow_left_line" />
 
             <TextView
+                android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="POKEDEX"
+                android:text="Name"
                 android:textSize="25sp"
                 android:textStyle="bold" />
+
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/et1"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:hint="Enter ID or Name of Pokemon"
-                android:padding="12dp"
-                android:background="@android:drawable/editbox_background" />
-
-            <Button
-                android:id="@+id/searchBTN"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFF500"
-                android:textColor="#000000"
-                android:text="SEARCH"
-                android:layout_marginStart="8dp" />
-        </LinearLayout>
 
         <!-- Pokemon Image -->
         <ImageView
@@ -76,16 +55,7 @@
             android:scaleType="fitCenter"
             android:src="@drawable/poke" />
 
-        <!-- Pokemon Name -->
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name: "
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"/>
+
 
         <!-- Pokemon Type with background -->
         <TextView
@@ -219,9 +189,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_marginTop="16dp">
-                
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter ID or Name of Pokemon"
+                    android:padding="12dp"
+                    android:background="@android:drawable/editbox_background" />
+
+                <Button
+                    android:id="@+id/searchBTN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FFF500"
+                    android:textColor="#000000"
+                    android:text="SEARCH"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
             <Button
                 android:id="@+id/clearBTN"
                 android:layout_width="match_parent"

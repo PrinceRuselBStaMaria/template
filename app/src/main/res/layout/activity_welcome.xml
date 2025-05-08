@@ -14,27 +14,47 @@
         android:padding="24dp"
         android:layout_marginBottom="40dp">
 
-
-        <TextView
-            android:id="@+id/descriptionText"
+        <!-- Combined Box with Welcome Message and Search Field -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Know everything about Pokemon and Enjoy!"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:gravity="center"
-            android:layout_marginTop="24dp"
-            android:paddingBottom="25dp"/>
+            android:orientation="vertical"
+            android:background="@drawable/squircle_box"
+            android:padding="20dp"
+            android:layout_marginBottom="24dp">
 
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="Enter Pokemon name or ID"
-            android:gravity="center"
-            android:paddingTop="20dp"/>
+            <!-- Welcome Message -->
+            <TextView
+                android:id="@+id/welcomeMessageBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:text="Know everything about Pokemon and Enjoy!"
+                android:textSize="20sp"
+                android:textColor="#333333"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"/>
+
+
+            <!-- Search field - just with underline -->
+            <EditText
+                android:id="@+id/editTextText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Pokemon name or ID"
+                android:inputType="text"
+                android:background="@null"
+                android:textSize="16sp"
+                android:textColorHint="#757575"
+                android:gravity="center"
+                android:paddingBottom="8dp"/>
+                
+            <!-- Just the underline for EditText -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#AAAAAA"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/search"
@@ -43,8 +63,7 @@
             android:text="Search"
             android:textStyle="bold"
             android:backgroundTint="#FFF500"
-            android:textColor="#000000"
-            android:layout_marginTop="16dp" />
+            android:textColor="#000000"/>
 
     </LinearLayout>
 

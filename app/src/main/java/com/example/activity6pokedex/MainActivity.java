@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        et1 = findViewById(R.id.et1);
-        searchBTN = findViewById(R.id.searchBTN);
+      et1 = findViewById(R.id.et1);
+      searchBTN = findViewById(R.id.searchBTN);
         clearBTN = findViewById(R.id.clearBTN);
         backBTN = findViewById(R.id.backBTN);  // This is now an ImageButton
         pokemonImage = findViewById(R.id.pokemonImage);

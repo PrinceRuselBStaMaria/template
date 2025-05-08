@@ -1,40 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF3C3C"
-    android:gravity="center"
-    android:padding="24dp">
+    android:background="@drawable/background_image">
 
-    <!-- Pokedex Image (Bulbasaur) -->
-    <ImageView
-        android:id="@+id/pokedexImage"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/poke" />
-
-    <!-- Description Text -->
-    <TextView
-        android:id="@+id/descriptionText"
+    <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Know everything about Pokemon and Enjoy!"
-        android:textSize="18sp"
-        android:textColor="#000000"
+        android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:layout_marginTop="24dp" />
+        android:padding="24dp"
+        android:layout_marginBottom="40dp">
 
-    <!-- Get Started Button -->
-    <Button
-        android:id="@+id/getStartedButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Get Started!"
-        android:textStyle="bold"
-        android:backgroundTint="#FFF500"
-        android:textColor="#000000"
-        android:layout_marginTop="16dp" />
-</LinearLayout>
+
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Know everything about Pokemon and Enjoy!"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:paddingBottom="25dp"/>
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Enter Pokemon name or ID"
+            android:gravity="center"
+            android:paddingTop="20dp"/>
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:textStyle="bold"
+            android:backgroundTint="#FFF500"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

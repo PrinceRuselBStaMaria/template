@@ -1,10 +1,12 @@
 package com.example.activity6pokedex;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     EditText et1;
     Button searchBTN;
     Button clearBTN;
+    ImageButton backBTN;  // Change to ImageButton
     ImageView pokemonImage;
     TextView tvID;
     TextView tvName;
@@ -65,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
                 .load(R.drawable.poke)
                 .into(pokemonImage);
 
+        // Check if search query was passed from welcome screen
+        String searchQuery = getIntent().getStringExtra("SEARCH_QUERY");
+        if (searchQuery != null && !searchQuery.isEmpty()) {
+            et1.setText(searchQuery);
+            fetchPokemonData(searchQuery);
+        }
+        
         searchBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,12 +93,23 @@ public class MainActivity extends AppCompatActivity {
                 clearPokemonData();
             }
         });
+        
+        backBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate back to WelcomeActivity
+                Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+                startActivity(intent);
+                finish(); // Close the current activity
+            }
+        });
     }
 
     private void initialize() {
         et1 = findViewById(R.id.et1);
         searchBTN = findViewById(R.id.searchBTN);
         clearBTN = findViewById(R.id.clearBTN);
+        backBTN = findViewById(R.id.backBTN);  // This is now an ImageButton
         pokemonImage = findViewById(R.id.pokemonImage);
         tvID = findViewById(R.id.tvID);
         tvName = findViewById(R.id.tvName);
